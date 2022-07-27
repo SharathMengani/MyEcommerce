@@ -1,0 +1,86 @@
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="text-center">
+                <u><h3>Details of the persons</h3></u>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <th>S.No</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Mobile No</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </thead>
+                <tr *ngFor="let obj of details,let ind=index">
+                    <td>{{ind+1}}</td>
+                    <td>{{obj.personid}}</td>
+                    <td>{{obj.name}}</td>
+                    <td>{{obj.age}}</td>
+                    <td>{{obj.gender}}</td>
+                    <td>{{obj.number}}</td>
+                    <td><a (click)="delete(details)"><i class="fa fa-trash-o"></i></a></td>
+                    <td><i class="fa fa-pencil-square-o" [attr.data-target]="'#'+obj.personid" data-toggle="modal"></i></td>
+                    <div class="modal fade bg-dark" [id]=obj.personid>
+                        <div class="modal modal-dialog modal-dialog-centered ">
+                            <div class="modal-content">
+                                <div class="modal-head">
+                                    <button class="close" data-dismiss="modal">X</button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="text-center">
+                                        <h3>Edit Form</h3>
+                                    </div>
+                                    <form #ref="ngForm">
+                                        <div class="form-group">
+
+                                            <label for="d">Id of Person</label>
+                                            <input type="text" name="personid" class="form-control" id="d" placeholder="Id of person......" [(ngModel)]=obj.personid>
+                                        </div>
+                                        <div class="form-group">
+
+                                            <label for="a">Name</label>
+                                            <input type="text" name="name" class="form-control" id="a" placeholder="Name......" [(ngModel)]=obj.name>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="b">Age</label>
+                                            <input type="number" name="age" class="form-control" id="b" placeholder="Age....." [(ngModel)]=obj.age>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="c">Mobile Number</label>
+                                            <input type="number" name="number" class="form-control" id="c" placeholder="enter Mobile num....." [(ngModel)]=obj.number>
+                                        </div>
+
+
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-success" data-dismiss="modal" (click)="edit(editDetails.value)">Submit</button>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                                <div class="modal-footer">
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </tr>
+
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+
+
+    </div>
+</div>
